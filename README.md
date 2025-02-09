@@ -1,2 +1,2 @@
 # GroupAllocator
-![Screenshot](screenshots/Diagram.drawio.png)
+![Screenshot](Diagram.drawio.png)
