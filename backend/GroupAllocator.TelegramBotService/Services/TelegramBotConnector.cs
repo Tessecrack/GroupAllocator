@@ -1,6 +1,8 @@
 using Telegram.Bot;
 using Microsoft.Extensions.Hosting;
 using GroupAllocator.TelegramBotService.Core;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 
 namespace GroupAllocator.TelegramBotService.Services
@@ -9,20 +11,32 @@ namespace GroupAllocator.TelegramBotService.Services
     {
         private readonly CancellationTokenSource _cancelationToken = new CancellationTokenSource();
 
-        private readonly TelegramBotClient _telegramBotClient;
+        private TelegramBotClient _telegramBotClient;
 
-        private readonly TelegramMessagesProcessor _messagesProcessor;
+        private TelegramMessagesProcessor _messagesProcessor;
+
+        private readonly TelegramUsersLocalStorage _localStorage;
+
+        private readonly TelegramBotClientOptions _botOptions;
 
         public Telegram.Bot.Types.User? Me { get; private set; }
 
         public TelegramBotConnector(TelegramUsersLocalStorage localStorage, TelegramBotClientOptions options)
         {
-            _telegramBotClient = new TelegramBotClient(options, cancellationToken: _cancelationToken.Token);
-            _messagesProcessor = new TelegramMessagesProcessor(_telegramBotClient, localStorage, _cancelationToken);
+            _localStorage = localStorage;
+            _botOptions = options;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            if (string.IsNullOrWhiteSpace(_botOptions.Token))
+            {
+                return;
+            }
+
+            _telegramBotClient = new TelegramBotClient(_botOptions, cancellationToken: _cancelationToken.Token);
+            _messagesProcessor = new TelegramMessagesProcessor(_telegramBotClient, _localStorage, _cancelationToken);
+
             Me = await _telegramBotClient.GetMe();
 
             if (Me == null)
@@ -36,6 +50,11 @@ namespace GroupAllocator.TelegramBotService.Services
 
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
+            if (Me == null)
+            {
+                return;
+            }
+
             _cancelationToken.Cancel();
 
             _telegramBotClient.OnMessage -= _messagesProcessor.HandleMessage;

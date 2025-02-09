@@ -20,7 +20,7 @@ namespace GroupAllocator.Client.Clients
         public GroupAllocatorClient(HttpClient httpClient, GroupAllocatorClientOptions options)
         {
             _httpClient = httpClient;
-            _accessToken = options.AccessToken;
+            _accessToken = options.AccessToken ?? string.Empty;
             _tokenString = $"token={_accessToken}";
         }
 

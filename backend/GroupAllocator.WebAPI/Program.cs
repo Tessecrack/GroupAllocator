@@ -12,6 +12,7 @@ using GroupAllocator.Models.UserModels;
 using Microsoft.EntityFrameworkCore;
 using GroupAllocator.TelegramBotService.Services;
 using Telegram.Bot;
+using GroupAllocator.WebAPI.Middleware.TokenAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,12 +33,25 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var tokenBot = builder.Configuration.GetSection("TELEGRAM_BOT_TOKEN").Value;
 
+
 builder.Services.AddSingleton<TelegramBotClientOptions>((provider) => new TelegramBotClientOptions(tokenBot));
 builder.Services.AddSingleton<TelegramUsersLocalStorage>();
 
 builder.Services.AddHostedService<TelegramBotConnector>();
 
 var app = builder.Build();
+
+if (string.IsNullOrWhiteSpace(accessApiToken))
+{
+    var logger = app.Services.GetService<ILogger>();
+    logger.LogWarning($"ACCESS_API_TOKEN не задан {accessApiToken}");
+}
+
+if (string.IsNullOrWhiteSpace(tokenBot))
+{
+    var logger = app.Services.GetService<ILogger>();
+    logger.LogError($"TELEGRAM_BOT_TOKEN не задан {tokenBot}");
+}
 
 if (app.Environment.IsDevelopment())
 {
@@ -46,7 +60,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseAccessTokenMiddleware(accessApiToken);
+app.UseAccessTokenMiddleware(accessApiToken);
 
 #region /api/roles
 
@@ -357,4 +371,6 @@ app.MapGet("/api/group_users/{id}", async (Guid id, IUnitOfWork db) =>
 });
 #endregion
 
+var url = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
 app.Run();
+

@@ -22,7 +22,9 @@
                        FontWeight="Bold"
                        Grid.Column="0"
                        Grid.Row="0"/>
-
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                       Style="{StaticResource StatusTextBlockStyle}"
+                       Text="{Binding StringConnectionApi}"/>
         </Grid>
     </Border>
 </UserControl>

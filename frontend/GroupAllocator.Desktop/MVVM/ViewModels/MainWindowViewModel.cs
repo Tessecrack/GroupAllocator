@@ -71,9 +71,11 @@ namespace GroupAllocator.Desktop.MVVM.ViewModels
             var accessApiToken = Environment.GetEnvironmentVariable("ACCESS_API_TOKEN");
             var options = new GroupAllocatorClientOptions(accessApiToken);
 
+            var urlApi = GetConnectionString();
+
             HttpClient _httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("http://localhost:5043")
+                BaseAddress = new Uri(urlApi)
             };
 
             var client = new GroupAllocatorClient(_httpClient, options);
@@ -82,7 +84,7 @@ namespace GroupAllocator.Desktop.MVVM.ViewModels
             HomeViewModel = new HomeViewModel(_appState);
             GroupsViewModel = new GroupsViewModel(_appState);
 
-            SettingsViewModel = new SettingsViewModel();
+            SettingsViewModel = new SettingsViewModel(urlApi);
 
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted);
             CollapseAppCommand = new LambdaCommand(OnCollapseAppCommandExecuted);
@@ -93,6 +95,22 @@ namespace GroupAllocator.Desktop.MVVM.ViewModels
             SwitchToSettingsViewModelCommand = new LambdaCommand(OnSwitchToSettingsViewCommandExecuted);
 
             CurrentView = HomeViewModel;
+        }
+
+        private string GetConnectionString()
+        {
+            var urlApi = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+            if (string.IsNullOrWhiteSpace(urlApi))
+            {
+                return "http://localhost:5043";
+            }
+
+            var urls = urlApi.Split(new[] { ';' });
+            if (urls.Length == 1)
+            {
+                return urlApi;
+            }
+            return urls[0];
         }
 
         public async Task UpdateHomeVMState()
