@@ -9,6 +9,7 @@ NET 8; C# ASP NET Minimal Web API; WPF; EF Core; SQLite; Telegram.Bot; WTelegram
 Платформа - Windows (сервер можно запустить, где угодно, но админка - только Windows). Для работы с админкой требуется запущенный сервер на том устройстве, где запускается админка.  
 Общение сервера с десктоп происходит по http://localhost:5073.  
 Для старта потребуются переменные среды:  
+`ASPNETCORE_URLS` - адрес хоста API;  
 `ACCESS_API_TOKEN` - токен для взаимодействия с API сервера (устанавливаете любое свое значение);  
 `TELEGRAM_API_HASH` - api hash для взаимодействия с чатами пользователя в админке - выдаётся Telegram. Детальнее https://core.telegram.org/api/obtaining_api_id;  
 `TELEGRAM_API_ID` - api id для взаимодействия с чатами пользователя в админке - выдаётся Telegram. Детальнее https://core.telegram.org/api/obtaining_api_id;  
