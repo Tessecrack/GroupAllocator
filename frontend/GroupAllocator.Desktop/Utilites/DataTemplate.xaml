@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:view="clr-namespace:GroupAllocator.Desktop.MVVM.Views"
+                    xmlns:viewmodel="clr-namespace:GroupAllocator.Desktop.MVVM.ViewModels">
+
+    <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
+        <view:Home/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodel:GroupsViewModel}">
+        <view:Groups/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodel:SettingsViewModel}">
+        <view:Settings/>
+    </DataTemplate>
+</ResourceDictionary>

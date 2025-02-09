@@ -1,0 +1,27 @@
+﻿<Application x:Class="GroupAllocator.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GroupAllocator.Desktop"
+             xmlns:vm="clr-namespace:GroupAllocator.Desktop.MVVM.ViewModels"
+             xmlns:view="clr-namespace:GroupAllocator.Desktop.MVVM.Views"
+             StartupUri="MVVM/Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/StatusTextBlockStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DarKBorderStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DataGridStyle.xaml"/>
+                <ResourceDictionary Source="Styles/MinimalVerticalScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TransparentListBoxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DarkTextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DarkButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TaskBarButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/MenuButtonStyle.xaml"/>
+                <ResourceDictionary Source="Utilites/DataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

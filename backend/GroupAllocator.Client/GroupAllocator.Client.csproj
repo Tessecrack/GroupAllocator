@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Clients\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GroupAllocator.Models\GroupAllocator.Models.csproj" />
+    <ProjectReference Include="..\GroupAllocator.DAL\GroupAllocator.DAL.csproj"/>
+  </ItemGroup>
+</Project>

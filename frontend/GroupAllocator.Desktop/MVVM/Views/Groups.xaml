@@ -1,0 +1,235 @@
+﻿<UserControl x:Class="GroupAllocator.Desktop.MVVM.Views.Groups"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GroupAllocator.Desktop.MVVM.Views"
+             xmlns:viewmodels="clr-namespace:GroupAllocator.Desktop.MVVM.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance Type=viewmodels:GroupsViewModel}">
+    <Border CornerRadius="20" 
+            Background="#101010">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="Группы" VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="LightGray"
+                       FontSize="16" 
+                       FontWeight="Bold"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+            <Grid Grid.Column="0" Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MaxWidth="400"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Column="0" Grid.Row="0"
+                                Style="{StaticResource DarkBorderStyle}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Column="0" Grid.Row="1"
+                                        Style="{StaticResource DarkBorderStyle}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Добавление группы" VerticalAlignment="Top"
+                                            HorizontalAlignment="Center"
+                                            Foreground="LightGray"
+                                            FontSize="12" 
+                                            FontWeight="Bold"
+                                            Grid.Column="0"
+                                            Grid.Row="0"/>
+
+                                        <Grid Grid.Column="0" Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock 
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="Название группы"
+                                                Style="{StaticResource TextBlockStyle}"/>
+                                            <TextBox
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Style="{StaticResource DarkTextBoxStyle}"
+                                                Text="{Binding NewGroupName}"/>
+
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Text="Описние группы"
+                                                Style="{StaticResource TextBlockStyle}"/>
+                                            <TextBox
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Style="{StaticResource DarkTextBoxStyle}"
+                                                Text="{Binding NewGroupDesc}"/>
+                                            <Button
+                                                Grid.Column="1" Grid.Row="2"
+                                                HorizontalAlignment="Right"
+                                                Content="Создать группу"
+                                                Style="{StaticResource DarkButtonStyle}"
+                                                Command="{Binding CreateGroupCommand}"/>
+                                            <TextBlock
+                                                Grid.ColumnSpan="2" Grid.Row="3"
+                                                Style="{StaticResource StatusTextBlockStyle}"
+                                                Text="{Binding StatusAddNewGroup}"/>
+
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="1"
+                            Style="{StaticResource DarkBorderStyle}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Список групп" VerticalAlignment="Top"
+                                    HorizontalAlignment="Center"
+                                    Foreground="LightGray"
+                                    FontSize="12" 
+                                    FontWeight="Bold"
+                                    Grid.Column="0"
+                                    Grid.Row="0"/>
+                                <DataGrid Grid.Row="1"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    HeadersVisibility="Column"
+                                    AutoGenerateColumns="False"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalGridLinesBrush="Transparent"
+                                    RowBackground="Transparent"
+                                    BorderBrush="LightGray"
+                                    HorizontalContentAlignment="Stretch"
+                                    Margin="10"
+                                    ColumnHeaderStyle="{StaticResource HeaderStyle}"
+                                    ItemsSource="{Binding Groups,UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedItem="{Binding SelectedGroup,UpdateSourceTrigger=PropertyChanged}">
+                                    <DataGrid.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                                            Color="#660077"/>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#440066"/>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="*" Foreground="White" Header="Название" Binding="{Binding Path=Name}"/>
+                                        <DataGridTextColumn Width="*" Foreground="White" Header="Описание" Binding="{Binding Path=Description}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Grid.Column="0" Grid.Row="2"
+                                     HorizontalAlignment="Right"
+                                     Content="Загрузить группы"
+                                     Style="{StaticResource DarkButtonStyle}"
+                                     Command="{Binding GetAllGroupsCommand}"
+                                     Margin="5, 5, 5, 5"/>
+
+                                <Button Grid.Column="0" Grid.Row="3"
+                                     HorizontalAlignment="Right"
+                                     Content="Удалить"
+                                     Style="{StaticResource DarkButtonStyle}"
+                                     Command="{Binding DeleteGroupCommand}"
+                                     Margin="5, 5, 5, 20"/>
+                                <TextBlock Text="{Binding StatusGroups}"
+                                     Style="{StaticResource StatusTextBlockStyle}"
+                                     Grid.Column="0" Grid.Row="4"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0"
+                        Style="{StaticResource DarkBorderStyle}">
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Участники" VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Foreground="LightGray"
+                                FontSize="12" 
+                                FontWeight="Bold"
+                                Margin="0,5,0,0"
+                                Grid.Column="0"
+                                Grid.Row="0"/>
+                            <DataGrid Grid.Row="1"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  HeadersVisibility="Column"
+                                  AutoGenerateColumns="False"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalGridLinesBrush="Transparent"
+                                  RowBackground="Transparent"
+                                  BorderBrush="LightGray"
+                                  HorizontalContentAlignment="Stretch"
+                                  Margin="10"
+                                  SelectedItem="{Binding SelectedUserFromGroup,UpdateSourceTrigger=PropertyChanged}"
+                                  ColumnHeaderStyle="{StaticResource HeaderStyle}"
+                                  ItemsSource="{Binding UsersFromGroup}">
+                                <DataGrid.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                                            Color="#660077"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#440066"/>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="*" Foreground="White" Header="Id" Binding="{Binding Path=TelegramUser.ChatId}"/>
+                                    <DataGridTextColumn Width="*" Foreground="White" Header="Имя" Binding="{Binding Path=FirstName}"/>
+                                    <DataGridTextColumn Width="*" Foreground="White" Header="Фамилия" Binding="{Binding Path=LastName}"/>
+                                    <DataGridTextColumn Width="*" Foreground="White" Header="Роль" Binding="{Binding Path=TelegramUser.UserRole.Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button  Grid.Row="2" Grid.Column="0" 
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                         Content="Удалить"
+                                         Style="{StaticResource DarkButtonStyle}" 
+                                         Command="{Binding DeleteUserCommand}"/>
+                            <TextBlock Grid.Row="3" Style="{StaticResource StatusTextBlockStyle}"
+                                       Text="{Binding StatusUsers}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

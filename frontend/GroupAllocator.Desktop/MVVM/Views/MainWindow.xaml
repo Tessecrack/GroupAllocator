@@ -1,0 +1,132 @@
+﻿<Window x:Class="GroupAllocator.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:GroupAllocator.Desktop"
+        xmlns:vm="clr-namespace:GroupAllocator.Desktop.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="650" 
+        Width="1100"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        MouseDown="Window_MouseDown">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border Background="#222123" CornerRadius="20"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <fa:ImageAwesome Margin="10" Foreground="#402155" Icon="Telegram"></fa:ImageAwesome>
+            <TextBlock Text="GALLO" FontFamily="Courier New" VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="DarkMagenta"
+                       FontSize="16" 
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.RowSpan="1"/>
+            <Border Grid.Column="0" Grid.Row="1" 
+                    CornerRadius="20"
+                    Background="#302030"
+                    Margin="5"
+                    Padding="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical"
+                        Grid.Column="0"
+                        Grid.Row="1">
+                    <Button
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Height="40"
+                        Width="40"
+                        Command="{Binding SwitchToHomeViewModelCommand}"
+                        Style="{StaticResource TaskBarButtonStyle}">
+                        <fa:ImageAwesome Foreground="LightGray" 
+                                         HorizontalAlignment="Center"
+                                     Height="25" Width="25" 
+                                     Icon="Home"/>
+                    </Button>
+                    <Button
+                        Margin="0, 20, 0, 0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Height="40"
+                        Width="40"
+                        Command="{Binding SwitchToGroupsViewModelCommand}"
+                        Style="{StaticResource TaskBarButtonStyle}">
+                        <fa:ImageAwesome Foreground="LightGray" 
+                        HorizontalAlignment="Center"
+                        Height="25" Width="25" 
+                        Icon="Group"/>
+                    </Button>
+                    <Button
+                        Margin="0, 20, 0, 0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Height="40"
+                        Width="40"
+                        Command="{Binding SwitchToSettingsViewModelCommand}"
+                        Style="{StaticResource TaskBarButtonStyle}">
+                                            <fa:ImageAwesome Foreground="LightGray" 
+                        HorizontalAlignment="Center"
+                        Height="25" Width="25" 
+                        Icon="Gear"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <ContentControl Grid.Row="1" Grid.Column="1"
+                            Margin="5,5,5,30"
+                            Content="{Binding CurrentView}">
+            </ContentControl>
+
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="3"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="15, 5, 15, 15">
+                <Button Grid.Column="1" Grid.Row="0" Margin="2"
+                        Height="25"
+                        Width="25"
+                    Style="{StaticResource TaskBarButtonStyle}"
+                        Command="{Binding CollapseAppCommand}">
+                    <fa:ImageAwesome Foreground="DarkMagenta" 
+                                     Height="15" Width="15" 
+                                     Icon="WindowMinimize"/>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="0" Margin="2"
+                        Height="25"
+                        Width="25"
+                    Style="{StaticResource TaskBarButtonStyle}"
+                        Command="{Binding MaximizeAppCommand}">
+                    <fa:ImageAwesome Foreground="DarkMagenta" 
+                     Height="15" Width="15" 
+                     Icon="WindowMaximize"/>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="0" Margin="2"
+                        Height="25"
+                        Width="25"
+                        Style="{StaticResource TaskBarButtonStyle}"
+                        Command="{Binding CloseAppCommand}">
+                    <fa:ImageAwesome Foreground="DarkMagenta" 
+                                     Height="15" Width="15" 
+                                     Icon="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="telegram.bot" Version="22.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GroupAllocator.DAL\GroupAllocator.DAL.csproj" />
+    <ProjectReference Include="..\GroupAllocator.Models\GroupAllocator.Models.csproj" />
+  </ItemGroup>
+
+</Project>

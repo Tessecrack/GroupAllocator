@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{85FCB1FA-E724-401C-80D6-12525901BB9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.DAL", "backend\GroupAllocator.DAL\GroupAllocator.DAL.csproj", "{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.Models", "backend\GroupAllocator.Models\GroupAllocator.Models.csproj", "{D6602C2C-3109-4A3C-8781-C9621D7E020B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.WebAPI", "backend\GroupAllocator.WebAPI\GroupAllocator.WebAPI.csproj", "{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.TelegramBotService", "backend\GroupAllocator.TelegramBotService\GroupAllocator.TelegramBotService.csproj", "{1814B51A-AE14-4076-A60C-2123A46FE56F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{DED8B5FA-81B6-4A96-A483-B5B5347515C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.Desktop", "frontend\GroupAllocator.Desktop\GroupAllocator.Desktop.csproj", "{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.Client", "backend\GroupAllocator.Client\GroupAllocator.Client.csproj", "{015BAD73-6B4D-40F2-8281-270671083AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupAllocator.TelegramUserService", "backend\GroupAllocator.TelegramUserService\GroupAllocator.TelegramUserService.csproj", "{D570D21A-8478-41E6-A2B9-FE26AEA8A81C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6602C2C-3109-4A3C-8781-C9621D7E020B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6602C2C-3109-4A3C-8781-C9621D7E020B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6602C2C-3109-4A3C-8781-C9621D7E020B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6602C2C-3109-4A3C-8781-C9621D7E020B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1814B51A-AE14-4076-A60C-2123A46FE56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1814B51A-AE14-4076-A60C-2123A46FE56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1814B51A-AE14-4076-A60C-2123A46FE56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1814B51A-AE14-4076-A60C-2123A46FE56F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015BAD73-6B4D-40F2-8281-270671083AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015BAD73-6B4D-40F2-8281-270671083AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015BAD73-6B4D-40F2-8281-270671083AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015BAD73-6B4D-40F2-8281-270671083AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D570D21A-8478-41E6-A2B9-FE26AEA8A81C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D570D21A-8478-41E6-A2B9-FE26AEA8A81C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D570D21A-8478-41E6-A2B9-FE26AEA8A81C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D570D21A-8478-41E6-A2B9-FE26AEA8A81C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E33FAAC3-DC1A-4F1A-915F-2AFB3CD5D0CF} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+		{D6602C2C-3109-4A3C-8781-C9621D7E020B} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+		{AAC3C8B1-7836-4E0D-86A3-02FA63B8462D} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+		{1814B51A-AE14-4076-A60C-2123A46FE56F} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+		{88B5ABF4-9B4B-47E0-84A2-47C6A3D5C1C6} = {DED8B5FA-81B6-4A96-A483-B5B5347515C1}
+		{015BAD73-6B4D-40F2-8281-270671083AE6} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+		{D570D21A-8478-41E6-A2B9-FE26AEA8A81C} = {85FCB1FA-E724-401C-80D6-12525901BB9C}
+	EndGlobalSection
+EndGlobal

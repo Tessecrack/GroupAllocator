@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <StartupObject>GroupAllocator.Desktop.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\backend\GroupAllocator.Client\GroupAllocator.Client.csproj" />
+    <ProjectReference Include="..\..\backend\GroupAllocator.DAL\GroupAllocator.DAL.csproj" />
+    <ProjectReference Include="..\..\backend\GroupAllocator.Models\GroupAllocator.Models.csproj" />
+    <ProjectReference Include="..\..\backend\GroupAllocator.TelegramUserService\GroupAllocator.TelegramUserService.csproj" />
+  </ItemGroup>
+
+</Project>
