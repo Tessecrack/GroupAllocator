@@ -18,7 +18,7 @@ NET 8; C# ASP NET Minimal Web API; WPF; EF Core; SQLite; Telegram.Bot; WTelegram
 - Сервреная часть (ASP net): предоставляет API для взаимодействия с БД и телеграм-ботом. (backend)
 - Админская часть (WPF): взаимодействие с чатами пользователя, создание/удаление групп, добавление/удаление участников/руководителей групп, выдача ролей участникам. (frontend)
 ### Client
-backednd/GroupAllocator.Client - http - клиент для взаимодействия с API
+backend/GroupAllocator.Client - http - клиент для взаимодействия с API
 ### Desktop
 ![UI_Admin_1](UIAdmin1.png)  
 ![UI_Admin_2](UIAdmin2.png)  
